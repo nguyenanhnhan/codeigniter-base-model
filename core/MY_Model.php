@@ -711,6 +711,19 @@ class MY_Model extends CI_Model
     }
 
     /**
+     * Return the selected columns
+     */
+    public function fields($fields = NULL)
+    {
+        if(isset($fields))
+        {
+            $fields = (is_array($fields)) ? implode(',',$fields) : $fields;
+            $this->_database->select($fields);
+        }
+        return $this;
+    }
+    
+    /**
      * Getter for the table name
      */
     public function table()
